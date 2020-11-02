@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "trdex-dev"
+  },
+  "targets": {
+    "trdex-dev": {
+      "hosting": {
+        "TRdexV2": [
+          "trdex-dev"
+        ]
+      }
+    }
+  }
+}

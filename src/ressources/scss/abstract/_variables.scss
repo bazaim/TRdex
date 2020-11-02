@@ -1,0 +1,12 @@
+$blue: #0192bd;
+$orange: #ff5f01;
+$warning: $orange;
+$info: $blue;
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$h1-font-size:                $font-size-base * 1.8 !default;
+$h2-font-size:                $font-size-base * 1.65 !default;
+$h3-font-size:                $font-size-base * 1.50 !default;
+$h4-font-size:                $font-size-base * 1.40 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;

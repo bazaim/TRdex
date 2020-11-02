@@ -1,0 +1,42 @@
+<header class="bg-warning mb-4">
+	<div class="navbar">
+		<div class="container d-flex justify-content-between p-0">
+			<a class="navbar-brand d-flex align-items-center logo" [routerLink]="['/']" (click)="showDropdown = false">
+				<img src="./assets/imgs/logo.png" alt="Transport Rousset">
+			</a>
+			<span class="navbar-text title">
+				<strong>TR</strong><em>dex</em>
+			</span>
+			<div class="navbar-text relative">
+				<button class="btn  btn-light mr-2" (click)="showDropdown = !showDropdown">
+					<i class="fa fa-ellipsis-v"></i>
+				</button>
+				<div class="list-group text-nowrap mr-2" *ngIf="showDropdown" id="dropdown">
+					<a class="list-group-item btn text-left" routerLink="/" routerLinkActive="d-none"
+						[routerLinkActiveOptions]="{ exact: true }" (click)="showDropdown = false">
+						<i class="fa fa-list"></i> Accueil
+					</a>
+					<a class="list-group-item btn text-left" *ngIf="isLogged" routerLink="/span"
+						routerLinkActive="d-none" [routerLinkActiveOptions]="{ exact: true }"
+						(click)="showDropdown = false">
+						<i class="fa fa-plus-circle"></i> Ajouter
+					</a>
+					<a class="list-group-item btn text-left" *ngIf="!isLogged" routerLink="/login"
+						routerLinkActive="d-none" [routerLinkActiveOptions]="{ exact: true }"
+						(click)="showDropdown = false">
+						<i class="fa fa-sign-in-alt"></i> Connexion
+					</a>
+					<a class="list-group-item btn text-left" *ngIf="isLogged" (click)="signOut()">
+						<i class="fa fa-sign-out-alt"></i> Déconnexion
+					</a>
+					<a class="list-group-item btn text-left" routerLink="/about"
+						routerLinkActive="d-none" [routerLinkActiveOptions]="{ exact: true }"
+						(click)="showDropdown = false">
+						<i class="fa fa-info-circle"></i> À-propos
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<div class="backdrop" *ngIf="showDropdown" (click)="showDropdown = false"></div>

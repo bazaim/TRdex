@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="input-group mb-3 realtive">
+        <input type="text" class="form-control" [(value)]="search" (keyup)="inputChange($event)">
+        <div *ngIf="search.length" class="d-flex align-items-center btn-clear-wrapper">
+            <button class="btn btn-sm btn-danger mr-2" (click)="inputClear()">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+        <div class="input-group-append">
+            <button class="input-group-text btn btn-warning">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+	<div *ngIf="loading" class="text-center text-big">
+		<i class="fas fa-circle-notch fa-spin loading-icon"></i>
+		<p class="loading-title">Chargement...</p>
+	</div>
+    <div *ngIf="!loading" class="list-group">
+        <ng-container *ngFor="let span of datasFiltered">
+            <ng-container *ngIf="!onlyTopSearch || span.max_rating && span.max_rating >= topSearchLevel">
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between align-items-start">
+                        <h5 class="mb-1 flex-grow-1">{{ span.label }}</h5>
+                        <small class="flex-shrink-1">{{ span.cities ? span.cities.length : 0 }} villes</small>
+                        <a class="btn btn-sm btn-dark flex-shrink-1 ml-2" *ngIf="isLogged" [routerLink]="['span', span.id]">
+                            <i class="fa fa-edit"></i>
+						</a>
+                    </div>
+                    <p class="mb-1" *ngIf="span.cities_text" [innerHTML]="span.cities_text"></p>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

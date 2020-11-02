@@ -1,0 +1,80 @@
+<div class="container">
+	<div *ngIf="loading" class="text-center text-big">
+		<i class="fas fa-circle-notch fa-spin loading-icon"></i>
+		<p class="loading-title">{{ loadingTitle }}</p>
+	</div>
+	<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="submit()">
+		<div class="d-flex justify-content-end">
+			<h1 class="flex-grow-1">
+				{{ span ? 'Modification' : 'Ajout' }}
+			</h1>
+			<div>
+				<button class="btn btn-success ml-3" type="submit" [disabled]="form.invalid || !datas.length">
+					<i class="fa fa-save"></i>
+				</button>
+			</div>
+		</div>
+
+		<div *ngIf="error" class="alert alert-danger">
+			<i class="fa fa-exclamation-triangle"></i>
+			Une erreur est survenue.
+		</div>
+
+		<div class="form-group">
+			<label class="w-100">
+				Libellé *
+				<input type="text" class="form-control" id="label" placeholder="Libellé *" formControlName="label">
+			</label>
+		</div>
+
+		<div class="list-group" formArrayName="cities">
+			<div *ngFor="let city of datas; let i = index;" [formGroupName]="i"
+				class="list-group-item list-group-item-action" [ngClass]="{ 'list-group-item-secondary' : i%2==0 }">
+				<label class="w-100">
+					<div class="d-flex w-100 justify-content-between align-items-end">
+						<div class="flex-grow-1">Ville *</div>
+						<a class="btn btn-sm btn-danger flex-shrink-1 ml-2 text-white" (click)="removeRow(i)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+					</div>
+					<input type="text" class="form-control" placeholder="Ville *" autocomplete="off"
+						[value]="city.label" formControlName="city">
+				</label>
+				<label class="w-100">
+					Latitude *
+					<input type="text" class="form-control" placeholder="Latitude *" autocomplete="off"
+						[value]="city.latitude" formControlName="latitude">
+				</label>
+				<label class="w-100">
+					Longitude *
+					<input type="text" class="form-control" placeholder="Longitude *" autocomplete="off"
+						[value]="city.longitude" formControlName="longitude">
+				</label>
+			</div>
+		</div>
+
+		<div class="d-flex justify-content-end mt-2 mb-4">
+			<button class="btn btn-dark btn-sm" (click)="addRow()" type="button">
+				<i class="fa fa-plus-circle"></i>
+				Ajouter une ville
+			</button>
+		</div>
+
+		<div class="d-flex justify-content-between" *ngIf="span">
+			<button class="btn btn-danger" type="button" (click)="delete()">
+				<i class="fa fa-trash"></i>
+				Supprimer
+			</button>
+			<button class="btn btn-success ml-3" type="submit" [disabled]="form.invalid || !datas.length">
+				<i class="fa fa-save"></i>
+				Modifier
+			</button>
+		</div>
+		<div class="d-flex justify-content-end" *ngIf="!span">
+			<button class="btn btn-success ml-3" type="submit" [disabled]="form.invalid || !datas.length">
+				<i class="fa fa-save"></i>
+				Ajouter
+			</button>
+		</div>
+	</form>
+</div>

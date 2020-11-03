@@ -12,7 +12,6 @@ import { Spans } from '../_core/span.data';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 	search = '';
-	isLoaded = false;
 	datas: ISpan[] = [];
 	datasFiltered: ISpan[] = [];
 	onlyTopSearch = false;

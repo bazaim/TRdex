@@ -1,3 +1,9 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
-<div class="mb-5"></div>
+<div [ngClass]="{ 'dark-theme':darkTheme }" *ngIf="darkTheme !== null">
+	<app-header [(darkTheme)]="darkTheme"></app-header>
+	<router-outlet></router-outlet>
+	<div class="pb-5"></div>
+</div>
+<div *ngIf="darkTheme === null" class="text-center text-big loader">
+	<i class="fas fa-circle-notch fa-spin loading-icon"></i>
+	<p class="loading-title">Chargement...</p>
+</div>

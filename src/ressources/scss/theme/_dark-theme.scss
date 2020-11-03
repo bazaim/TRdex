@@ -1,0 +1,76 @@
+.dark-theme {
+	min-height: 100vh;
+	background-color: $dark;
+
+	header {
+		background-color: darken($warning, 15%) !important;
+		.logo {
+			background-color: $gray-500;
+			img {
+				mix-blend-mode: multiply;
+			}
+		}
+		.title {
+			em {
+				color: $gray-300 !important;
+			}
+		}
+	}
+
+	.btn {
+		&:active,
+		&:focus,
+		&:hover {
+			color: $gray-500;
+		}
+		&.btn-light {
+			background-color: $gray-500;
+			border-color: $gray-500;
+			color: $gray-900;
+		}
+		&.btn-warning {
+			background-color: $gray-500;
+			border-color: $gray-500;
+			color: $gray-900;
+			&:active,
+			&:focus,
+			&:hover {
+				background-color: darken($warning, 15%) !important;
+				border-color: darken($warning, 15%) !important;
+			}
+		}
+		&.btn-danger {
+			background-color: darken($danger, 15%);
+			border-color: darken($danger, 15%);
+			color: $gray-300;
+		}
+		&.btn-dark {
+			color: $gray-400;
+		}
+		&.btn-success {
+			background-color: darken($success, 15%);
+			border-color: darken($success, 15%);
+		}
+	}
+
+	.form-control {
+		background-color: $gray-500;
+		border-color: $gray-500;
+		color: $gray-900;
+	}
+
+	.list-group-item {
+		&,
+		&:hover {
+			background: $gray-900;
+			color: $gray-500;
+		}
+	}
+
+	.loader,
+	app-login,
+	app-form,
+	app-about {
+		color: $gray-400;
+	}
+}

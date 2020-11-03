@@ -8,7 +8,11 @@
 				<strong>TR</strong><em>dex</em>
 			</span>
 			<div class="navbar-text relative">
-				<button class="btn  btn-light mr-2" (click)="showDropdown = !showDropdown">
+				<button class="btn btn-light mr-2" (click)="toggleTheme()">
+					<i *ngIf="darkTheme" class="fa fa-sun"></i>
+					<i *ngIf="!darkTheme" class="fa fa-moon"></i>
+				</button>
+				<button class="btn btn-light mr-2" (click)="showDropdown = !showDropdown">
 					<i class="fa fa-ellipsis-v"></i>
 				</button>
 				<div class="list-group text-nowrap mr-2" *ngIf="showDropdown" id="dropdown">

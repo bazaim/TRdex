@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ICity, ISpan } from '../_core/interfaces';
+import { ICity as ICityOriginal, ISpan } from '../_core/interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { SpansService } from '../_core/spans.service';
+
+interface ICity extends ICityOriginal {
+	open?: boolean;
+}
 
 @Component({
 	selector: 'app-form',
@@ -66,9 +70,9 @@ export class FormComponent implements OnInit {
 	}
 
 	createRow(data?: ICity): FormGroup {
-		const city = new FormControl(data ? data.label : '', [Validators.required]);
-		const latitude = new FormControl(data ? data.gps.lat : '', [Validators.required]);
-		const longitude = new FormControl(data ? data.gps.lng : '', [Validators.required]);
+		const city = new FormControl(data?.label ?? '', [Validators.required]);
+		const latitude = new FormControl(data?.gps?.lat ?? '');
+		const longitude = new FormControl(data?.gps?.lng ?? '');
 
 		return new FormGroup({
 			city,

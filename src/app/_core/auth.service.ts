@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from './../../environments/environment';
 
 @Injectable({
 	providedIn: 'root'
@@ -32,7 +33,7 @@ export class AuthService {
 	}
 
 	isLogged() {
-		return !!this.user;
+		return !environment.login || !!this.user;
 	}
 
 	signIn(email: string, password: string) {

@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration=production",
+    "workbox": "workbox generateSW workbox-config.js",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-	"deploy": "ng build --configuration=production && workbox generateSW workbox-config.js && firebase deploy --only hosting"
+	"e2e": "ng e2e",
+	"host": "firebase deploy --only hosting",
+	"deploy": "npm run build && npm run workbox && npm run host"
   },
   "private": true,
   "dependencies": {

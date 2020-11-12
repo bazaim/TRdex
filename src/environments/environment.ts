@@ -12,8 +12,7 @@ export const environment = {
 		storageBucket: 'trdex-dev.appspot.com',
 		messagingSenderId: '405491364878',
 		appId: '1:405491364878:web:dccd703e77cb17832ef85f'
-	},
-	login: true
+	}
 };
 
 /*
